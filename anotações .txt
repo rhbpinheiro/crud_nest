@@ -8,4 +8,9 @@ Testes
 - Tudo em seu código deve ser testado
 - testes são complexos
 
+toda vez que reiniciar o comp devemos rodar no bash
+
+$ eval $(ssh-agent)
+$ ssh-add ~/.ssh/rhbpinheiro_rsa
+
 
