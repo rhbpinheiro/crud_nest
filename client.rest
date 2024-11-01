@@ -1,0 +1,121 @@
+@baseUrl = http://localhost:3000
+@authToken = {{authenticate.response.body.accessToken}}
+
+@refreshToken = {{authenticate.response.body.refreshToken}}
+# LER TODOS RECADOS
+###
+GET {{baseUrl}}/recados
+?limit=1
+&offset=0
+
+
+# LER UM RECADO
+###
+GET {{baseUrl}}/recados/23
+
+# CRIAR RECADO
+###
+POST {{baseUrl}}/recados/criar_rec
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+    "texto": "rescado",
+    "paraId": 23
+
+}
+
+
+###
+PATCH {{baseUrl}}/recados/atualizar_rec/23/
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+    "texto": "Recado lido", 
+    "lido": true
+}
+
+
+###
+DELETE {{baseUrl}}/recados/deletar_rec/23
+Authorization: Bearer {{authToken}}
+
+
+##############################################################
+##Pessoas
+
+# LER TODOS RECADOS 
+###
+GET {{baseUrl}}/pessoas/
+ ?limit=10
+&offset=0
+Authorization: Bearer {{authToken}}
+# LER UM RECADO
+###
+GET {{baseUrl}}/pessoas/24
+Authorization: Bearer {{authToken}}
+# CRIAR RECADO
+###
+POST {{baseUrl}}/pessoas/
+Content-Type: application/json
+
+{
+    "email": "novo456@exampl.com",
+    "password": "12345",
+    "nome": "rodolpgo"
+
+}
+
+
+###
+PATCH {{baseUrl}}/pessoas/24/
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+    "nome": "Rodolpho"
+}
+
+
+###
+DELETE {{baseUrl}}/pessoas/26
+Authorization: Bearer {{authToken}}
+
+###
+# @name authenticate 
+POST {{baseUrl}}/auth/
+Content-Type: application/json
+
+{
+    "email": "novo@exampl.com",
+    "password": "12345"
+}
+
+### Re-Authenticate
+# @name reAuthenticate
+POST {{baseUrl}}/auth/refresh/
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+{
+    "refreshToken": "{{refreshToken}}"
+}
+
+# uploadPicture
+### Foto
+POST {{baseUrl}}/pessoas/upload-picture/
+Authorization: Bearer {{authToken}}
+Content-Type: multipart/form-data; boundary=----7d6b4d0b1a0a
+
+------7d6b4d0b1a0a
+Content-Disposition: form-data; name="file"; filename="full.jpg"
+Content-Type: image/jpeg
+
+< ./dev/imagens/full.jpg
+------7d6b4d0b1a0a--
+
+### Ver foto
+GET {{baseUrl}}/pictures/27.png
+
+
+

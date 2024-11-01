@@ -1,0 +1,11 @@
+Politica de autorizações
+
+- Metadados das rotas
+
+Testes
+- É interresante começar o codigo com testes
+- E possivel escrever testes antes de ter o codigo
+- Tudo em seu código deve ser testado
+- testes são complexos
+
+
