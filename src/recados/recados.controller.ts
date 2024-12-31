@@ -57,8 +57,8 @@ export class RecadosController {
   @UseGuards(AuthTokenGuard)
   @Post('criar_rec')
   create(
-    @Body() createRecadoDto: CreateRecadoDto, 
-    @TokenPayloadParam() tokenPayload: TokenPayloadDto
+    @Body() createRecadoDto: CreateRecadoDto,
+    @TokenPayloadParam() tokenPayload: TokenPayloadDto,
   ) {
     return this.recadosService.create(createRecadoDto, tokenPayload);
   }
@@ -68,7 +68,7 @@ export class RecadosController {
   update(
     @Param('id') id: number,
     @Body() updateRecadoDto: UpdateRecadoDto,
-    @TokenPayloadParam() tokenPayload: TokenPayloadDto
+    @TokenPayloadParam() tokenPayload: TokenPayloadDto,
   ) {
     return this.recadosService.update(id, updateRecadoDto, tokenPayload);
   }
@@ -76,8 +76,8 @@ export class RecadosController {
   @UseGuards(AuthTokenGuard)
   @Delete('deletar_rec/:id')
   remove(
-    @Param('id') id: number, 
-    @TokenPayloadParam() tokenPayload: TokenPayloadDto
+    @Param('id') id: number,
+    @TokenPayloadParam() tokenPayload: TokenPayloadDto,
   ) {
     return this.recadosService.remove(id, tokenPayload);
   }
